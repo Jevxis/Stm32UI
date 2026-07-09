@@ -14,7 +14,14 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel>
+        <Grid>
+            <Button Content="LED ON" HorizontalAlignment="Right" Command="{Binding LedOnCommand}"/>
+            <Button Content="LED OFF" HorizontalAlignment="Left" Command="{Binding LedOffCommand}"/>
+            <Button Content="GET TEMP" HorizontalAlignment="Center" Command="{Binding GetDataDHTCommand}"/>
+            <TextBlock Text="{Binding Temperature}" HorizontalAlignment="Stretch" Margin="0,110,110,0"/>
+            <TextBlock Text="{Binding Humidity}" HorizontalAlignment="Stretch" Margin="0,130,130,0"/>
+        </Grid>
+    </StackPanel>
 
 </Window>
