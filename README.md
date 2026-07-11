@@ -7,7 +7,9 @@ TTL(RX) -> PA9
 TTL(TX) -> PA10
 # Датчики
 ## DHT11
-
+VCC -> 5 V  
+GND -> GND  
+Data -> PA1
 # Файлы проекта
 Stm32ControlUI проект для Keil или Stm32Cube  
 Stm32UIController проект для фронта (Интерфейс)
