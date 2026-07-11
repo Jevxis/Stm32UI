@@ -27,5 +27,14 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/denna/source/repos/Stm32UI/Stm32UIController/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/HumidityGraphView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/TemperatureGraphView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/TemperatureView.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

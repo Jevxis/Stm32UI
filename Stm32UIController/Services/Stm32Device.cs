@@ -1,7 +1,9 @@
-﻿using Stm32UIController.Interfaces;
+﻿using Avalonia.Media.TextFormatting.Unicode;
+using Stm32UIController.Interfaces;
 using Stm32UIController.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -12,14 +14,15 @@ namespace Stm32UIController.Services
     public sealed class Stm32Device : IStm32Device, IDisposable
     {
 
-        private readonly SerialPort _port = new();
+        private readonly SerialPort _port;
         public Stm32Device(string comPort)
         {
-            _port.PortName = comPort;
-            _port.BaudRate = 115200;
-            _port.NewLine = "\r\n";
-            _port.ReadTimeout = 1000;
-            _port.WriteTimeout = 1000;
+            _port = new SerialPort(comPort, 115200)
+            {
+                NewLine = "\r\n",
+                ReadTimeout = 1000,
+                WriteTimeout = 1000
+            };
         }
 
         public bool isConnected => _port.IsOpen;
@@ -49,24 +52,68 @@ namespace Stm32UIController.Services
 
         public void Open()
         {
-            _port.Open();
+            try
+            {
+                if(!_port.IsOpen)
+                    _port.Open();
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+            }
+            
         }
 
         public string Send(string command)
         {
-            _port.WriteLine(command);
-            return _port.ReadLine();
+            try
+            {
+                if(_port.IsOpen)
+                {
+                    _port.WriteLine(command);
+                    return _port.ReadLine();
+                }
+                throw new Exception("Порт закрыт");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         public Dht11Data GetDataDht()
         {
-            string response = Send("GET TEMP");
-            string[] parts = response.Split(' ');
-            return new Dht11Data
+            if (_port.IsOpen) 
             {
-                Temperature = parts[0],
-                Humidity = parts[1]
-            };
+                string response = Send("GET TEMP");
+                string[] parts = response.Split(' ');
+                try
+                {
+                    return new Dht11Data
+                    {
+                        Temperature = $"Температура = {parts[0].Replace("Temp=", "")}",
+                        Humidity = $"Влажность = {parts[1].Replace("Hum=", "")}"
+                    };
+                }
+                catch (Exception)
+                {
+                    return new Dht11Data
+                    {
+                        Temperature = "0",
+                        Humidity = "0"
+                    };
+                }
+            }
+            else
+                return new Dht11Data
+                {
+                    Temperature = "0",
+                    Humidity = "0"
+                }; ;
+            
         }
 
     }

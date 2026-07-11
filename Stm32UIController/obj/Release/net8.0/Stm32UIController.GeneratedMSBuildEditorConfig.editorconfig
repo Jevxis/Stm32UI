@@ -27,5 +27,8 @@ build_property.EnableCodeStyleSeverity =
 [C:/Users/denna/source/repos/Stm32UI/Stm32UIController/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/DHT11Control.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/denna/source/repos/Stm32UI/Stm32UIController/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

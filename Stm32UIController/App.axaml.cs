@@ -3,35 +3,56 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using Stm32UIController.Services;
 using Stm32UIController.ViewModels;
 using Stm32UIController.Views;
+using System;
 using System.Linq;
 
 namespace Stm32UIController
 {
     public partial class App : Application
     {
-        public override void Initialize()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
-
+        public static IServiceProvider Services { get; private set; } = null!;
         public override void OnFrameworkInitializationCompleted()
         {
+            var services = new ServiceCollection();
+
+            ConfigureServices(services);
+
+            Services = services.BuildServiceProvider();
+
+            var device = Services.GetRequiredService<Stm32Device>();
+            device.Open();
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-                // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-                DisableAvaloniaDataAnnotationValidation();
-                desktop.MainWindow = new MainWindow
+                desktop.Exit += (_, _) =>
                 {
-                    DataContext = new MainWindowViewModel(),
+                    Services.GetRequiredService<Stm32Device>().Dispose();
                 };
+                desktop.MainWindow = Services.GetRequiredService<MainWindow>();
             }
 
             base.OnFrameworkInitializationCompleted();
         }
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<Stm32Device>(_ => new Stm32Device("COM4"));
 
+            services.AddSingleton<TemperatureViewModel>();
+            services.AddSingleton<TemperatureGraphVM>();
+            services.AddSingleton<HumidityGraphVM>();
+
+            services.AddSingleton<MainWindowViewModel>();
+
+            services.AddSingleton<MainWindow>();
+            
+        }
+        public override void Initialize()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
         private void DisableAvaloniaDataAnnotationValidation()
         {
             // Get an array of plugins to remove

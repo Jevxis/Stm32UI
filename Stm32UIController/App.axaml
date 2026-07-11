@@ -1,14 +1,27 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Stm32UIController.App"
+             xmlns:vm="using:Stm32UIController.ViewModels"
+             xmlns:views="using:Stm32UIController.Views"
              xmlns:local="using:Stm32UIController"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
+        <DataTemplate DataType="vm:TemperatureViewModel">
+            <views:TemperatureView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="vm:TemperatureGraphVM">
+            <views:TemperatureGraphView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="vm:HumidityGraphVM">
+            <views:HumidityGraphView/>
+        </DataTemplate>
         <local:ViewLocator/>
     </Application.DataTemplates>
-  
+    
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

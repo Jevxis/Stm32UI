@@ -1,7 +1,10 @@
 ﻿
+using Avalonia.Interactivity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Stm32UIController.Services;
+using Stm32UIController.Views;
+using System.IO.Ports;
 using Tmds.DBus.Protocol;
 
 namespace Stm32UIController.ViewModels
@@ -9,35 +12,46 @@ namespace Stm32UIController.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private string _temperature;
-        [ObservableProperty]
-        private string _humidity;
+        private ViewModelBase? currentView;
+        public TemperatureViewModel TemperatureVM { get; }
+        public TemperatureGraphVM TemperatureGraphVM { get; }
+        public HumidityGraphVM HumidityGraphVM { get; }
         private readonly Stm32Device _device;
-        public MainWindowViewModel()
+        public MainWindowViewModel(
+        TemperatureViewModel temperatureVm,
+        TemperatureGraphVM temperatureGraphVm,
+        HumidityGraphVM humidityGraphVm)
         {
-            _device = new Stm32Device("COM4");
-            _device.Open();
-            _temperature = "";
-            _humidity = "";
-        }
-
-        [RelayCommand]
-        private void LedOn()
-        {
-            _device.LedOn();
-        }
-
-        [RelayCommand]
-        private void LedOff()
-        {
-            _device.LedOff();
+            TemperatureVM = temperatureVm;
+            TemperatureGraphVM = temperatureGraphVm;
+            HumidityGraphVM = humidityGraphVm;
+            currentView = TemperatureVM;
+            TemperatureVM.Start();
         }
         [RelayCommand]
         private void GetDataDHT()
         {
+            TemperatureVM.Start();
             var data = _device.GetDataDht();
-            Temperature = data.Temperature;
-            Humidity = data.Humidity;
+        }
+        [RelayCommand]
+        private void OpenTemperature()
+        {
+            TemperatureVM.Start();
+            CurrentView = TemperatureVM;
+            
+        }
+        [RelayCommand]
+        private void OpenTemperatureGraph()
+        {
+            TemperatureVM?.Stop();
+            CurrentView = TemperatureGraphVM;
+        }
+        [RelayCommand]
+        private void OpenHumidityGraph()
+        {
+            TemperatureVM?.Stop();
+            CurrentView = HumidityGraphVM;
         }
     }
 }

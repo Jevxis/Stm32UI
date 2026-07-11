@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XJlIAfjGe3Y=",
+  "dgSpecHash": "STvhY/tbS4o=",
   "success": true,
   "projectFilePath": "C:\\Users\\denna\\source\\repos\\Stm32UI\\Stm32UIController\\Stm32UIController.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,8 @@
     "C:\\Users\\denna\\.nuget\\packages\\harfbuzzsharp.nativeassets.webassembly\\8.3.1.1\\harfbuzzsharp.nativeassets.webassembly.8.3.1.1.nupkg.sha512",
     "C:\\Users\\denna\\.nuget\\packages\\harfbuzzsharp.nativeassets.win32\\8.3.1.1\\harfbuzzsharp.nativeassets.win32.8.3.1.1.nupkg.sha512",
     "C:\\Users\\denna\\.nuget\\packages\\microcom.runtime\\0.11.0\\microcom.runtime.0.11.0.nupkg.sha512",
+    "C:\\Users\\denna\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.9\\microsoft.extensions.dependencyinjection.10.0.9.nupkg.sha512",
+    "C:\\Users\\denna\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.9\\microsoft.extensions.dependencyinjection.abstractions.10.0.9.nupkg.sha512",
     "C:\\Users\\denna\\.nuget\\packages\\runtime.android-arm.runtime.native.system.io.ports\\10.0.9\\runtime.android-arm.runtime.native.system.io.ports.10.0.9.nupkg.sha512",
     "C:\\Users\\denna\\.nuget\\packages\\runtime.android-arm64.runtime.native.system.io.ports\\10.0.9\\runtime.android-arm64.runtime.native.system.io.ports.10.0.9.nupkg.sha512",
     "C:\\Users\\denna\\.nuget\\packages\\runtime.android-x64.runtime.native.system.io.ports\\10.0.9\\runtime.android-x64.runtime.native.system.io.ports.10.0.9.nupkg.sha512",
