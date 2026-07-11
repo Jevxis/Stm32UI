@@ -1,4 +1,5 @@
 # Настройки Stm32f103c8t6
+UART  
 PA10 - RX   
 PA9 - TX  
 # Связь по UART через USB-TTL
