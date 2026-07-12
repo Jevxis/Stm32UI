@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Stm32UIController")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+855c3b746054ed46a2a733bbe898af2c0d752089")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d1f4fd6c6b5de09c640c676d75447c922dee01c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Stm32UIController")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Stm32UIController")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

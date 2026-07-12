@@ -18,28 +18,28 @@ namespace Stm32UIController.ViewModels
     public partial class TemperatureGraphVM : ViewModelBase
     {
         private Stm32Device _device;
-        public ObservableCollection<ObservablePoint> Values { get; } = [];
+        public ObservableCollection<ObservablePoint> TemperatureValues { get; } = [];
         public ISeries[] Series { get; }
         private int index;
         public TemperatureGraphVM(Stm32Device device, DHTdataService DHTservice)
         {
             _device = device;
             Series =
-        [
-            new LineSeries<ObservablePoint>
-            {
-                Values = Values
-            }
-        ];
+            [
+                new LineSeries<ObservablePoint>
+                {
+                    Values = TemperatureValues
+                }
+            ];
             DHTservice.TemperatureChanged += OnTemperatureChanged;
         }
         private void OnTemperatureChanged(Dht11Data data)
         {
-            if(double.TryParse(data.Temperature.Replace("Температура = ", "").Replace(".", ","), out var t))
+            if (int.TryParse(data.Temperature.Replace("Температура = ", ""), out var t))
             {
-                Values.Add(new ObservablePoint(index++, t));
-                if (Values.Count > 100)
-                    Values.RemoveAt(0);
+                TemperatureValues.Add(new ObservablePoint(index++, t));
+                if (TemperatureValues.Count > 100)
+                    TemperatureValues.RemoveAt(0);
             }
         }
     }

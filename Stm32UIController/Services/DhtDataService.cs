@@ -16,6 +16,7 @@ namespace Stm32UIController.Services
             _device = device;
         }
         public event Action<Dht11Data>? TemperatureChanged;
+        public event Action<Dht11Data>? HumidityChanged;
         public async Task StartMeasurement(CancellationToken cts)
         {
             while(!cts.IsCancellationRequested)
@@ -23,6 +24,7 @@ namespace Stm32UIController.Services
                 var data = _device.GetDataDht();
 
                 TemperatureChanged?.Invoke(data);
+                HumidityChanged?.Invoke(data);
 
                 await Task.Delay(500);
             }
