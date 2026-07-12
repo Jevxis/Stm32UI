@@ -9,12 +9,14 @@ using Stm32UIController.ViewModels;
 using Stm32UIController.Views;
 using System;
 using System.Linq;
+using System.Threading;
 
 namespace Stm32UIController
 {
     public partial class App : Application
     {
         public static IServiceProvider Services { get; private set; } = null!;
+        private CancellationToken _cts;
         public override void OnFrameworkInitializationCompleted()
         {
             var services = new ServiceCollection();
@@ -24,7 +26,9 @@ namespace Stm32UIController
             Services = services.BuildServiceProvider();
 
             var device = Services.GetRequiredService<Stm32Device>();
+            var service = Services.GetRequiredService<DHTdataService>();
             device.Open();
+            _ = service.StartMeasurement(_cts);
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.Exit += (_, _) =>
@@ -43,6 +47,7 @@ namespace Stm32UIController
             services.AddSingleton<TemperatureViewModel>();
             services.AddSingleton<TemperatureGraphVM>();
             services.AddSingleton<HumidityGraphVM>();
+            services.AddSingleton<DHTdataService>();
 
             services.AddSingleton<MainWindowViewModel>();
 

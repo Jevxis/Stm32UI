@@ -170,3 +170,7 @@ C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\runtimes\
 C:\Users\denna\source\repos\Stm32UI\Stm32UIController\obj\Debug\net8.0\Stm32UIController.sourcelink.json
 C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\LiveChartsCore.dll
+C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\LiveChartsCore.SkiaSharpView.dll
+C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\LiveChartsCore.SkiaSharpView.Avalonia.dll
+C:\Users\denna\source\repos\Stm32UI\Stm32UIController\bin\Debug\net8.0\SkiaSharp.HarfBuzz.dll

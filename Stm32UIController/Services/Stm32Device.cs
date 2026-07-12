@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Stm32UIController.Services
@@ -19,9 +20,10 @@ namespace Stm32UIController.Services
         {
             _port = new SerialPort(comPort, 115200)
             {
-                NewLine = "\r\n",
-                ReadTimeout = 1000,
-                WriteTimeout = 1000
+                NewLine = "\n",
+                ReadTimeout = 5000,
+                WriteTimeout = 5000
+                
             };
         }
 
@@ -35,6 +37,7 @@ namespace Stm32UIController.Services
         {
             if (_port.IsOpen)
             {
+                
                 _port.Close();
             }
             _port.Dispose();
@@ -55,7 +58,15 @@ namespace Stm32UIController.Services
             try
             {
                 if(!_port.IsOpen)
+                {
+                    _port.DtrEnable = false;
+                    _port.RtsEnable = false;
                     _port.Open();
+                    Thread.Sleep(1000);
+
+                    _port.DiscardInBuffer();
+                    _port.DiscardOutBuffer();
+                }
             }
             catch (Exception ex)
             {
@@ -89,6 +100,7 @@ namespace Stm32UIController.Services
             if (_port.IsOpen) 
             {
                 string response = Send("GET TEMP");
+
                 string[] parts = response.Split(' ');
                 try
                 {
@@ -102,16 +114,16 @@ namespace Stm32UIController.Services
                 {
                     return new Dht11Data
                     {
-                        Temperature = "0",
-                        Humidity = "0"
+                        Temperature = "Not Found DHT",
+                        Humidity = "Not Found DHT"
                     };
                 }
             }
             else
                 return new Dht11Data
                 {
-                    Temperature = "0",
-                    Humidity = "0"
+                    Temperature = "Not Found DHT",
+                    Humidity = "Not Found DHT"
                 }; ;
             
         }

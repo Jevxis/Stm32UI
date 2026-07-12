@@ -1,5 +1,6 @@
 ﻿using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Stm32UIController.Models;
 using Stm32UIController.Services;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,16 @@ namespace Stm32UIController.ViewModels
         [ObservableProperty]
         private string _humidity;
 
-        public TemperatureViewModel(Stm32Device device)
+        public TemperatureViewModel(Stm32Device device, DHTdataService DHTservice)
         {
             _device = device;
+            DHTservice.TemperatureChanged += OnTemperatureChanged;
         }
-
+        private void OnTemperatureChanged(Dht11Data data)
+        {
+            Temperature = data.Temperature;
+            Humidity = data.Humidity;
+        }
         public void Start()
         {
             _cts = new CancellationTokenSource();
@@ -50,7 +56,7 @@ namespace Stm32UIController.ViewModels
                     Humidity = data.Humidity;
                 });
 
-                await Task.Delay(200, token);
+                await Task.Delay(500, token);
             }
         }
 

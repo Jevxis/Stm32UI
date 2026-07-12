@@ -24,6 +24,9 @@ C:\Users\denna\.nuget\packages\avalonia.win32\11.3.9\lib\net8.0\Avalonia.Win32.d
 C:\Users\denna\.nuget\packages\avalonia.x11\11.3.9\lib\net8.0\Avalonia.X11.dll
 C:\Users\denna\.nuget\packages\communitytoolkit.mvvm\8.2.1\lib\net6.0\CommunityToolkit.Mvvm.dll
 C:\Users\denna\.nuget\packages\harfbuzzsharp\8.3.1.1\lib\net8.0\HarfBuzzSharp.dll
+C:\Users\denna\.nuget\packages\livechartscore\2.0.5\lib\net8.0\LiveChartsCore.dll
+C:\Users\denna\.nuget\packages\livechartscore.skiasharpview.avalonia\2.0.5\lib\net8.0\LiveChartsCore.SkiaSharpView.Avalonia.dll
+C:\Users\denna\.nuget\packages\livechartscore.skiasharpview\2.0.5\lib\net8.0\LiveChartsCore.SkiaSharpView.dll
 C:\Users\denna\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\Microsoft.CSharp.dll
 C:\Users\denna\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\10.0.9\lib\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -35,6 +38,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\Micros
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\mscorlib.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\netstandard.dll
 C:\Users\denna\.nuget\packages\skiasharp\2.88.9\lib\net6.0\SkiaSharp.dll
+C:\Users\denna\.nuget\packages\skiasharp.harfbuzz\2.88.9\lib\net6.0\SkiaSharp.HarfBuzz.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\System.Buffers.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.28\ref\net8.0\System.Collections.Concurrent.dll
